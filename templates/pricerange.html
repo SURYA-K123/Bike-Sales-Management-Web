@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav>
+        <img src="{{ url_for('static', filename='images/bike.png') }}" alt="Logo" class="logo">
+        <div class="form">
+            <form action="/search_pr" method="POST">
+                <input type="number" class="search-pr1" placeholder="Starting price range" name="pr1">
+                <input type="number" class="search-pr2" placeholder="Ending price range" name="pr2">
+                <input type="submit" value="Search" class="search-btn">
+            </form>
+
+        </div>
+        <form action="/logout">
+            <button class="logout" type="submit">
+                Logout
+            </button>
+        </form>
+    </nav>
+    <div class="side-nav-bar">
+        <div class="profile">
+            <img src="{{ url_for('static', filename='images/profile.png') }}" alt="Logo" class="profile-image">
+            <p class="text">
+                Name
+            </p>
+            <p class="text">
+                Email
+            </p>
+        </div>
+        <div class="options">
+            <a href="{{ url_for('bikesmodel') }}" id="bike-model">Filter By Model</a>
+            <a href="{{ url_for('bikesec') }}" id="bike-ec">Filter By Engine Capacity</a>
+            <a href="{{ url_for('bikespr') }}" id="bike-pr">Filter By Price range</a>
+
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="bikes" id="abc">
+            {% for bike in data %}
+            <div class="bike-card">
+                <p class="id">{{ bike[0] }}</p>
+                <img src="{{ bike[1] }}" alt="{{ bike[0] }}" class="bike-image">
+                <p class="bike-details">
+                    BRAND : {{ bike[3] }}
+                </p>
+                <p class="bike-details">
+                    MODEL : {{ bike[2] }}
+                </p>
+                <p class="bike-details">
+                    PRICE : {{ bike[4] }}
+                </p>
+                <input type="submit" value="View Details" class="view-bikes" onclick="getDetails(event)">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+    <script>
+        document.getElementById("bike-pr").style.backgroundColor="black"
+        document.getElementById("bike-pr").style.color="white"
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</body>
+
+</html>

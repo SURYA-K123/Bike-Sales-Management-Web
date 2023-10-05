@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <h4>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </h4>
+    <nav>
+        <img src="{{ url_for('static', filename='images/bike.png') }}" alt="Logo" class="logo">
+        <br>
+        <img src="{{ url_for('static', filename='images/profile.png') }}" alt="Profile" class="profile-image">
+    </nav>
+    <div class="side-nav-bar">
+        <div class="options">
+            <a href="{{ url_for('index') }}" id="home">Home</a>
+            <a href="{{ url_for('vbranch') }}" id="view-bikes">Branch</a>
+            <a href="#" id="billing">Employee</a>
+            <a href="{{ url_for('addbike') }}" id="add-bike">Add Bike</a>
+            <a href="#" id="add-employee">Add Employee</a>
+            <a href="{{ url_for('addbranch') }}" id="add-branch">Add Branch</a>
+            <a href="#" id="logout">Logout</a>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="bikes">
+            {% for bike in data %}
+            <div class="bike-card">
+                <img src="{{ bike[1] }}" alt="Bike" class="bike-image">
+                <p class="bike-details">
+                    MODEL: {{ bike[2] }}
+                </p>
+                <p class="bike-details">
+                    MILEAGE: {{ bike[3] }}
+                </p>
+                <p class="bike-details">
+                    PRICE: {{ bike[4] }}
+                </p>
+                <a href="{{ url_for('editbike', id=bike[0]) }}">Edit</a><br>
+
+                <a onclick="return confirm('Are you sure to delete?');" href="{{ url_for('deletebike', id=bike[0]) }}">Delete</a>
+            </div> 
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

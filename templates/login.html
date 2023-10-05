@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+        <title>Login landing page</title>
+    </head>
+    <body>
+        <section class="side">
+            <img src="{{ url_for('static', filename='images/Pngtree.png') }}" alt="Logo" class="logo">
+        </section>
+
+        <section class="main">
+            <div class="login-container">
+                <p class="title">Bike Management System</p>
+                <div class="separator"></div>
+                <p class="welcome-message">Bike is not just A Machine, It's an Emotion</p>
+                <form class="login-form" method="POST">
+                    <div class="form-control">
+                        <input type="text" name="u" placeholder="Username">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="form-control">
+                        <input type="password" name="p" placeholder="Password">
+                        <i class="fas fa-lock"></i>
+                    </div>
+    
+                    <button class="submit" input type="submit">Login</button>
+                </form>
+            </div>
+        </section>
+    </body>
+</html>

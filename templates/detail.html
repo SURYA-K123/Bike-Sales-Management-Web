@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/details.css') }}">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav>
+        <img src="{{ url_for('static', filename='images/bike.png') }}" alt="Logo" class="logo">
+        <div class="form">
+            <form action="/search_post" method="POST">
+                <input type="text" class="search-bar" placeholder="Enter the model to Search..." name="model">
+                <input type="submit" value="Search" class="search-btn">
+            </form>
+
+        </div>
+        <form action="/logout">
+            <button class="logout" type="submit">
+                Logout
+            </button>
+        </form>
+    </nav>
+    <div class="main-content">
+        <div class="bikes">
+            <img src="{{ data[0][3] }}" alt="{{ data[0][0] }}" class="bike-image">
+            <p class="bike-details">
+                BRAND : {{ data[0][1] }}
+            </p>
+            <p class="bike-details">
+                MODEL_NAME : {{ data[0][2] }}
+            </p>
+            <p class="bike-details">
+                PRICE : {{ data[0][4] }}
+            </p>
+            <p class="bike-details">
+                MILEAGE : {{ data[0][5] }} KM/L
+            </p>
+            <p class="bike-details">
+                ENGINE CAPACITY : {{ data[0][6] }}CC
+            </p>
+            <p class="bike-details">
+                TANK CAPACITY : {{ data[0][7] }}L
+            </p>
+            <p class="bike-details">
+                GEAR : {{ data[0][8] }}
+            </p>
+            <p class="bike-details">
+                FUEL TYPE : {{ data[0][9] }}
+            </p>
+            <p class="bike-details">
+                BRAKE : {{ data[0][10] }}
+            </p>
+            <p class="bike-details">
+                MAX TORQUE : {{ data[0][11] }}Nm
+            </p>
+            <p class="bike-details">
+                MAX POWER : {{ data[0][12] }}bhp
+            </p>
+        </div>
+        <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</body>
+</html>

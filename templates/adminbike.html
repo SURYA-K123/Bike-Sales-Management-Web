@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav>
+        <img src="{{ url_for('static', filename='images/bike.png') }}" alt="Logo" class="logo">
+        <form action="/addbikepage">
+            <button class="add-button" id="add-bike" type="submit">&plus; ADD A BIKE</button>
+        </form>
+        <form action="/logout">
+            <button class="logout" type="submit">
+                Logout
+            </button>
+        </form>
+    </nav>
+    <div class="side-nav-bar">
+        <div class="profile">
+            <img src="{{ url_for('static', filename='images/profile.png') }}" alt="Logo" class="profile-image">
+            <p class="text">
+                Name
+            </p>
+            <p class="text">
+                Email
+            </p>
+        </div>
+        <div class="options">
+            <a href="{{ url_for('bikesadmin') }}" id="bike">Bike</a>
+            <a href="{{ url_for('vbranch') }}" id="add-branch">Branch</a>
+            <a href="{{ url_for('billing') }}" id="billing">Billing</a>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="branch" id="abc">
+            {% for bike in data %}
+            <div class="bike-card1">
+                <p class="id" style="display: none;">{{ bike[0] }}</p>
+                <img src="{{ bike[1] }}" alt="{{ bike[0] }}" class="bike-image">
+                <p class="bike-details">
+                    BRAND : {{ bike[3] }}
+                </p>
+                <p class="bike-details">
+                    MODEL : {{ bike[2] }}
+                </p>
+                <p class="bike-details">
+                    PRICE : {{ bike[4] }}
+                </p>
+                <input type="submit" value="Edit" class="edit" onclick="editBike(event)">
+                <input type="submit" value="Delete" class="delete" onclick="deleteBike(event)">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+    <script>
+        document.getElementById("bike").style.backgroundColor = "black"
+        document.getElementById("bike").style.color = "white"
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</body>
+
+</html>

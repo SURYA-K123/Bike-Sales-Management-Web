@@ -1,0 +1,72 @@
+<html>
+
+<head>
+	<title>BIKE SHOW ROOM</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}">
+</head>
+
+<body>
+	<nav>
+		<img src="{{ url_for('static', filename='images/bike.png') }}" alt="Logo" class="logo">
+		<form action="/logout">
+            <button class="logout" type="submit">
+                Logout
+            </button>
+        </form>
+	</nav>
+	<div class="side-nav-bar">
+		<div class="profile">
+			<img src="{{ url_for('static', filename='images/profile.png') }}" alt="Logo" class="profile-image">
+			<p class="text">
+				Name
+			</p>
+			<p class="text">
+				Email
+			</p>
+		</div>
+		<div class="options">
+			<a href="{{ url_for('bikesadmin') }}" id="bike">Bike</a>
+			<a href="{{ url_for('vbranch') }}" id="add-branch">Branch</a>
+			<a href="{{ url_for('billing') }}" id="billing">Billing</a>
+
+		</div>
+	</div>
+	<div class="main-content">
+		<h1>Update Bike Details</h1>
+		<form action="/editbikedetails" method='POST'>
+			<input type="text" id="branchname" value="{{ datas[0] }}" name="id" required>
+			<label for="branch-name">Brand:</label>
+			<input type="text" id="branchname" value="{{ datas[1] }}" name="brand" required>
+			<label>Model Name:</label>
+			<input type="text" name="model" value="{{ datas[2] }}" required>
+			<label for="branch-address">Image</label>
+			<input type="text" id="branchlocation" value="{{ datas[3] }}" name="image">
+			<label for="branch-phone">price</label>
+			<input type="text" id="branchphone" value="{{ datas[4] }}" name="price">
+			<label>Mileage</label>
+			<input type="text" name="mileage" value="{{ datas[5] }}" required>
+			<label>Engine Capacity</label>
+			<input type="text" name="ec" value="{{ datas[6] }}" required>
+			<label>Fuel tank capacity</label>
+			<input type="text" name="ftc" value="{{ datas[7] }}" required>
+			<label>Gears</label>
+			<input type="text" name="gears" value="{{ datas[8] }}">
+			<label>Fuel Type</label>
+			<input type="text" name="ft" value="{{ datas[9] }}" required>
+			<label>Brake</label>
+			<input type="text" name="brake" value="{{ datas[10] }}" required>
+			<label>Maximum Torque</label>
+			<input type="text" name="mt" value="{{ datas[11] }}" required>
+			<label>Mamimum power</label>
+			<input type="text" name="mp" value="{{ datas[12] }}" required>
+			<input type="submit" value="Update Bike">
+		</form>
+	</div>
+	<script>
+		document.getElementById("bike").style.backgroundColor = "black"
+		document.getElementById("bike").style.color = "white"
+	</script>
+</body>
+
+</html>
